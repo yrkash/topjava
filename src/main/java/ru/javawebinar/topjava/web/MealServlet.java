@@ -11,6 +11,7 @@ import ru.javawebinar.topjava.model.Role;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.repository.MealRepository;
 import ru.javawebinar.topjava.repository.inmemory.InMemoryMealRepository;
+import ru.javawebinar.topjava.service.MealService;
 import ru.javawebinar.topjava.util.MealsUtil;
 import ru.javawebinar.topjava.web.meal.MealRestController;
 import ru.javawebinar.topjava.web.user.AdminRestController;
@@ -28,27 +29,18 @@ import java.util.Objects;
 //@Component
 public class MealServlet extends HttpServlet {
 
-
     private static final Logger log = LoggerFactory.getLogger(MealServlet.class);
 
-
-
     private MealRestController mealRestController;
-    public MealServlet(MealRestController mealRestController) {
-        this.mealRestController = mealRestController;
-    }
-
-    /*public MealServlet(MealRestController mealRestController) {
-        this.mealRestController = mealRestController;
-    }*/
+    ConfigurableApplicationContext appCtx = new ClassPathXmlApplicationContext("spring/spring-app.xml");
 
     @Override
     public void init() {
-        try (ConfigurableApplicationContext appCtx = new ClassPathXmlApplicationContext("spring/spring-app.xml")) {
+        /*try (ConfigurableApplicationContext appCtx = new ClassPathXmlApplicationContext("spring/spring-app.xml")) {
             mealRestController = appCtx.getBean(MealRestController.class);
-            System.out.println("Bean definition names: " + Arrays.toString(appCtx.getBeanDefinitionNames()));
-        }
-//        repository = new InMemoryMealRepository();
+        }*/
+        mealRestController = appCtx.getBean(MealRestController.class);
+
 
     }
 
@@ -101,6 +93,10 @@ public class MealServlet extends HttpServlet {
                 request.getRequestDispatcher("/meals.jsp").forward(request, response);
                 break;
         }
+    }
+    @Override
+    public void destroy() {
+        appCtx.close();
     }
 
     private int getId(HttpServletRequest request) {
