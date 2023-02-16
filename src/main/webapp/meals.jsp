@@ -50,5 +50,17 @@
         </c:forEach>
     </table>
 </section>
+
+<form action="meals.jsp" method="GET">
+    not Before: <input
+        type="datetime-local" name="dateFrom"
+        value="<c:out value="${fn:formatDateTime(dateFrom)}" />" />
+
+    <br />
+    not After: <input
+        type="datetime-local" name="dateTo"
+        value="<c:out value="${fn:formatDateTime(dateTo)}" />" />
+    <a href="meals?action=getAllFilter&dateFrom=${dateFrom}&dateTo=${dateTo}">Filter</a>
+</form>
 </body>
 </html>

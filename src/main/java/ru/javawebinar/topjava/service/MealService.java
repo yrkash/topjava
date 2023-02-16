@@ -7,6 +7,7 @@ import ru.javawebinar.topjava.repository.MealRepository;
 import ru.javawebinar.topjava.repository.UserRepository;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -36,6 +37,10 @@ public class MealService {
 
     public Collection<Meal> getAll(int userId) {
         return repository.getAll(userId);
+    }
+
+    public Collection<Meal> getAllWithDateFilter(int userId, LocalDateTime dateFrom, LocalDateTime dateTo) {
+        return repository.getAllWithDateFilter(userId, dateFrom, dateTo);
     }
 
     public void update(Meal meal, int userId) {

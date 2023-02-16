@@ -10,6 +10,8 @@ import ru.javawebinar.topjava.util.MealsUtil;
 import ru.javawebinar.topjava.util.ValidationUtil;
 import ru.javawebinar.topjava.web.SecurityUtil;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -69,6 +71,15 @@ public class InMemoryMealRepository implements MealRepository {
 
         return repository.values().stream()
                 .filter(meal -> (meal.getUserId() == userId))
+                .sorted(new MealComparator())
+                .collect(Collectors.toList());
+    }
+
+    public Collection<Meal> getAllWithDateFilter(int userId, LocalDateTime dateFrom, LocalDateTime dateTo) {
+
+        return repository.values().stream()
+                .filter(meal -> (meal.getUserId() == userId))
+                .filter(meal -> (!dateFrom.isAfter(meal.getDateTime())) && (!dateTo.isBefore(meal.getDateTime())))
                 .sorted(new MealComparator())
                 .collect(Collectors.toList());
     }
