@@ -3,7 +3,6 @@ package ru.javawebinar.topjava.model;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -30,7 +29,6 @@ public class Meal extends AbstractBaseEntity {
     public static final String ALL_SORTED_TIME = "Meal.getAllSortedWithTime";
 
     @Column(name = "date_time")
-    @Temporal(TemporalType.TIMESTAMP)
     @NotNull
     private LocalDateTime dateTime;
 
@@ -58,6 +56,15 @@ public class Meal extends AbstractBaseEntity {
         this.dateTime = dateTime;
         this.description = description;
         this.calories = calories;
+
+    }
+
+    public Meal(Integer id, LocalDateTime dateTime, String description, int calories, User user) {
+        super(id);
+        this.dateTime = dateTime;
+        this.description = description;
+        this.calories = calories;
+        this.user = user;
     }
 
     public LocalDate getDate() {return dateTime.toLocalDate();}

@@ -62,7 +62,7 @@ public class User extends AbstractNamedEntity {
         this.meals = meals;
     }
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Meal> meals;
 
     public User() {
@@ -145,4 +145,5 @@ public class User extends AbstractNamedEntity {
                 ", caloriesPerDay=" + caloriesPerDay +
                 '}';
     }
+
 }
