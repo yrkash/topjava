@@ -1,7 +1,9 @@
 package ru.javawebinar.topjava.service;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.*;
+import org.junit.rules.ExternalResource;
+import org.junit.rules.Stopwatch;
+import org.junit.runner.Description;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -28,6 +30,12 @@ import static ru.javawebinar.topjava.UserTestData.USER_ID;
 @Sql(scripts = "classpath:db/populateDB.sql", config = @SqlConfig(encoding = "UTF-8"))
 @Ignore
 public class MealServiceTest {
+
+    @ClassRule
+    public static ExternalResource summary = TimingRules.SUMMARY;
+
+    @Rule
+    public Stopwatch stopwatch = TimingRules.STOPWATCH;
 
     @Autowired
     private MealService service;
