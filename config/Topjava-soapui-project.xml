@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project activeEnvironment="Default" name="Topjava" resourceRoot="" soapui-version="5.6.0"
-                    abortOnError="false" runType="SEQUENTIAL" id="b6a174fe-9cda-4410-af25-bdf04e1fed39"
-                    xmlns:con="http://eviware.com/soapui/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                    xsi:schemaLocation="http://eviware.com/soapui/config ">
+<con:soapui-project activeEnvironment="Default" name="Topjava" resourceRoot="" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" id="b6a174fe-9cda-4410-af25-bdf04e1fed39" xsi:schemaLocation="http://eviware.com/soapui/config " xmlns:con="http://eviware.com/soapui/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
-    <con:interface xsi:type="con:RestService" wadlVersion="http://wadl.dev.java.net/2009/02"
-                   name="http://localhost:8080" type="rest" id="eebe6f3c-c045-444a-ae8f-c0f4bbb345b5"
-                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:interface xsi:type="con:RestService" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://localhost:8080" type="rest" id="eebe6f3c-c045-444a-ae8f-c0f4bbb345b5">
         <con:settings/>
-        <con:definitionCache/>
-        <con:endpoints>
+        
+        <con:definitionCache type="TEXT" rootPart=""/><con:endpoints>
             <con:endpoint>http://localhost:8080</con:endpoint>
         </con:endpoints>
         <con:resource name="users" path="/topjava/rest/admin/users" id="6da03be8-b9dc-43d8-a333-3253fa8d4dad">
@@ -36,10 +31,9 @@
                     <con:params/>
                     <con:element>Response</con:element>
                 </con:representation>
-                <con:request name="AdminGetAll" mediaType="application/json" id="e073a168-8421-4a54-99db-5a321de647a7">
+                <con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="AdminGetAll" mediaType="application/json" id="e073a168-8421-4a54-99db-5a321de647a7">
                     <con:settings>
-                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
-                        </con:setting>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
                     </con:settings>
                     <con:endpoint>http://localhost:8080</con:endpoint>
                     <con:request/>
@@ -79,13 +73,10 @@
                     <con:mediaType>application/json;charset=UTF-8</con:mediaType>
                     <con:status>201</con:status>
                     <con:params/>
-                    <con:element xmlns:user="http://localhost/topjava/rest/admin/users"
-                                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                                 xsi:schemaLocation="http://localhost/topjava/rest/admin/users ">user:Response
+                    <con:element xsi:schemaLocation="http://localhost/topjava/rest/admin/users " xmlns:user="http://localhost/topjava/rest/admin/users">user:Response
                     </con:element>
                 </con:representation>
-                <con:request name="AdminCreate" mediaType="application/json" postQueryString="false"
-                             id="5bd4c733-d82e-4d43-b193-ab6e0f898c26">
+                <con:request name="AdminCreate" mediaType="application/json" postQueryString="false" id="5bd4c733-d82e-4d43-b193-ab6e0f898c26">
                     <con:settings>
                         <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
                         </con:setting>
@@ -111,7 +102,7 @@
         </con:resource>
         <con:resource name="users" path="/topjava/rest/admin/users/100000" id="7f8ab4ae-b6a8-4aa8-a502-9dbebb27ad8b">
             <con:settings/>
-            <con:parameters/>
+            <con:parameters><con:parameter><con:name>name</con:name><con:value/><con:style>QUERY</con:style><con:default/><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>email</con:name><con:value/><con:style>QUERY</con:style><con:default/><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>password</con:name><con:value/><con:style>QUERY</con:style><con:default/><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>roles</con:name><con:value/><con:style>QUERY</con:style><con:default/><con:description xsi:nil="true"/></con:parameter></con:parameters>
             <con:method name="" method="GET" id="7a2525a5-8d97-4c33-97ab-dc071c529154">
                 <con:settings/>
                 <con:parameters/>
@@ -148,8 +139,13 @@
                     </con:credentials>
                     <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
                     <con:jmsPropertyConfig/>
-                    <con:parameters/>
-                </con:request>
+                    <con:parameters>
+  <con:entry key="password" value=""/>
+  <con:entry key="roles" value=""/>
+  <con:entry key="name" value=""/>
+  <con:entry key="email" value=""/>
+</con:parameters>
+                <con:parameterOrder><con:entry>name</con:entry><con:entry>email</con:entry><con:entry>password</con:entry><con:entry>roles</con:entry></con:parameterOrder></con:request>
             </con:method>
             <con:method name="" method="PUT" id="6ba10636-f473-4505-8c66-673b087953df">
                 <con:settings/>
@@ -200,15 +196,13 @@
                     <con:params/>
                     <con:element>data</con:element>
                 </con:representation>
-                <con:request name="AdminUpdate" mediaType="application/json" postQueryString="false"
-                             id="efc6bc55-7b69-4992-974d-9a1c54d342ed">
+                <con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="AdminUpdate" mediaType="application/json" postQueryString="false" id="efc6bc55-7b69-4992-974d-9a1c54d342ed">
                     <con:settings>
-                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
-                        </con:setting>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
                     </con:settings>
                     <con:endpoint>http://localhost:8080</con:endpoint>
                     <con:request>{"name": "UserUpdated",
-                        "email": "user@yandex.ru",
+                        "email": "user1@yandex.ru",
                         "password": "passwordNew",
                         "roles": ["USER"]
                         }
@@ -221,11 +215,16 @@
                     </con:credentials>
                     <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
                     <con:jmsPropertyConfig/>
-                    <con:parameters/>
-                </con:request>
+                    <con:parameters>
+  <con:entry key="password" value="psw"/>
+  <con:entry key="roles" value="USER"/>
+  <con:entry key="name" value="UserUpdated"/>
+  <con:entry key="email" value="user1@mail.ru"/>
+</con:parameters>
+                <con:parameterOrder><con:entry>name</con:entry><con:entry>email</con:entry><con:entry>password</con:entry><con:entry>roles</con:entry></con:parameterOrder></con:request>
             </con:method>
         </con:resource>
-        <con:resource name="profile" path="/topjava/rest/profile" id="dc6bc427-b446-4a76-bbb7-94608e15aa11">
+        <con:resource name="profile" path="/topjava/rest/profile/text" id="dc6bc427-b446-4a76-bbb7-94608e15aa11">
             <con:settings/>
             <con:parameters/>
             <con:method name="" method="GET" id="4970902f-2d28-4e9e-bece-e944ea382323">
@@ -251,8 +250,7 @@
                 </con:representation>
                 <con:request name="Get" mediaType="application/json" id="284adf4f-eb7e-44eb-83a9-b038a370efc4">
                     <con:settings>
-                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
-                        </con:setting>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
                     </con:settings>
                     <con:endpoint>http://localhost:8080</con:endpoint>
                     <con:request/>
@@ -328,8 +326,7 @@
                     <con:params/>
                     <con:element>data</con:element>
                 </con:representation>
-                <con:request name="Update" mediaType="application/json" postQueryString="false"
-                             id="e45dfcce-1514-43ae-9233-a60407161db6">
+                <con:request name="Update" mediaType="application/json" postQueryString="false" id="e45dfcce-1514-43ae-9233-a60407161db6">
                     <con:settings>
                         <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
                         </con:setting>
@@ -383,8 +380,7 @@
                     <con:params/>
                     <con:element>data</con:element>
                 </con:representation>
-                <con:request name="Delete" mediaType="application/json" id="efec2863-f29c-436a-8509-71ab92e2e670"
-                             postQueryString="false">
+                <con:request name="Delete" mediaType="application/json" id="efec2863-f29c-436a-8509-71ab92e2e670" postQueryString="false">
                     <con:settings>
                         <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
                         </con:setting>
