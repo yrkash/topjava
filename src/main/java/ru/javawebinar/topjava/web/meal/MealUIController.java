@@ -13,7 +13,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/meals/ui", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/profile/meals", produces = MediaType.APPLICATION_JSON_VALUE)
 public class MealUIController extends AbstractMealController {
 
     @Override
@@ -37,7 +37,7 @@ public class MealUIController extends AbstractMealController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void createOrUpdate( Meal meal) {
+    public void createOrUpdate(Meal meal) {
         if (meal.isNew()) {
             super.create(meal);
         } else {
