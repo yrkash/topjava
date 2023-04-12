@@ -45,9 +45,9 @@ public class MealUIController extends AbstractMealController {
         }
         if (mealTo.isNew()) {
             super.create(new Meal(null, mealTo.getDateTime(), mealTo.getDescription(), mealTo.getCalories()));
-            return ResponseEntity.ok().build();
+
         }
-        return ResponseEntity.ok().body("Don't create");
+        return ResponseEntity.ok().build();
     }
 
     @Override

@@ -18,6 +18,7 @@
             <spring:message code="common.add"/>
         </button>
         <table class="table table-striped" id="datatable">
+
             <thead>
             <tr>
                 <th><spring:message code="user.name"/></th>
