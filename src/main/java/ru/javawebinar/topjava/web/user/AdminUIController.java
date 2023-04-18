@@ -24,6 +24,7 @@ public class AdminUIController extends AbstractUserController {
 
     @Override
     @GetMapping("/{id}")
+
     public User get(@PathVariable int id) {
         return super.get(id);
     }
@@ -44,8 +45,10 @@ public class AdminUIController extends AbstractUserController {
         }*/
         if (userTo.isNew()) {
             super.create(userTo);
+            System.out.println("create");
         } else {
             super.update(userTo, userTo.id());
+            System.out.println("update");
         }
 //        return ResponseEntity.ok().build();
     }
