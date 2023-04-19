@@ -50,6 +50,10 @@ public class UserTestData {
         updated.setRoles(Collections.singletonList(Role.ADMIN));
         return updated;
     }
+    public static User getNotValidNew() {
+        return new User(null, "New", "", "newPass", 1555, false, new Date(), Collections.singleton(Role.USER));
+    }
+
 
     public static String jsonWithPassword(User user, String passw) {
         return JsonUtil.writeAdditionProps(user, "password", passw);
